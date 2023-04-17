@@ -4,7 +4,7 @@ const enquirer = require('enquirer');
 const fileLocation = './assets/README.md'
 
 
-
+//promt that ill gather user info
 enquirer
   .prompt([
     {
@@ -55,7 +55,7 @@ enquirer
     },
     {
       type: 'input',
-      message: 'What license did you choose?',
+      message: 'tell us more about the license you chose:',
       name: 'License',
     },
     {
@@ -70,7 +70,7 @@ enquirer
     },
   ])
   .then((response) =>{
-    console.log(response.Icon);
+    //get the  license selected and display the correct icon under the title.
     let icon ;
     switch(response.Icon){
       case 'MIT':
@@ -83,18 +83,18 @@ enquirer
         icon =  "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
         break;
     }
-
+    //set user answers into string for the README file
     let title = `# ${response.Title}\n${icon}`;
     let description = `## Descrition \n ${response.Description}`;
     let usage = `## Usage\n${response.Usage}\n ![${response.Screenshot}] \n ${response.Deployed}`;
     let installation = `## Installation\n${response.installation}`;
     let license = `## License\n${response.license}`;
-    
     let credit = `## Credit\n${response.Credit}`;
     let test = `## Test\n${response.Test}`
     let question = `## Question\nFor question or enquiries lease contact me at:\n- https://github.com/${response.Question}\n- ${response.Email}`
     const table = `## Table of content\n- [Installation](#installation)\n- [Usage](#usage)\n- [Credit](#credit)\n- [License](#license)\n- [Features](#features)\n- [Test](#test)\n- [Question](#question)`;
 
+    //create a string representation of the readme file and save as a .md is the assets folder.
     let doc = `${title}\n${description}\n${table}\n${installation}\n${usage}\n${credit}\n${license}\n${test}\n${question}`
     fs.writeFile(`${fileLocation}`, doc,(err) =>
     err ? console.log(err) : console.log('Success!')
