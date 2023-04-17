@@ -1,7 +1,7 @@
 //importing fs package
 const fs = require('fs');
 const inquirer = require('enquirer');
-
+const fileLocation = './assets/README.md'
 
 
 
@@ -37,9 +37,9 @@ inquirer
     let title = `# ${response.Title}`;
     let description = `## Descrition \n ${response.Description}`;
     let usage = `${response.Usage}\n ![${response.Screenshot}] \n ${response.Deployed}`;
-    const table = `## Table of content\n - [Usage](#usage)\n- [Features](#features)` 
-    let doc = `${title}\n${description}\n${table}\n${usage}`
-    fs.writeFile('./assets/README.md', doc,(err) =>
+    //const table = `## Table of content\n - [Usage](#usage)\n- [Features](#features)` 
+    let doc = `${title}\n${description}\n${usage}`
+    fs.writeFile(`${fileLocation}`, doc,(err) =>
     err ? console.log(err) : console.log('Success!')
     );
 
