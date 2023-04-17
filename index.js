@@ -50,8 +50,18 @@ enquirer
     {
       type: 'select',
       message: 'Which license did you use?',
-      choices: ['choice A','Choice B'],
+      choices: ['MIT','GPLv2','Apache'],
+      name: 'LicenseIcon',
+    },
+    {
+      type: 'input',
+      message: 'What license did you choose?',
       name: 'License',
+    },
+    {
+      type: 'input',
+      message: 'What is your github username?',
+      name: 'Question',
     },
   ])
   .then((response) =>{
@@ -59,11 +69,13 @@ enquirer
     let description = `## Descrition \n ${response.Description}`;
     let usage = `## Usage\n${response.Usage}\n ![${response.Screenshot}] \n ${response.Deployed}`;
     let installation = `## Installation\n${response.installation}`;
+    let license = `## License\n${response.license}`;
     let credit = `## Credit\n${response.Credit}`;
     let test = `## Test\n${response.Test}`
-    const table = `## Table of content\n- [Installation](#installation)\n- [Usage](#usage)\n- [License](#license)\n- [Contributing](#contributing)\n- [Features](#features)\n- [Test](#test)\n`;
+    let question = `## Questions\n${response.Question}`
+    const table = `## Table of content\n- [Installation](#installation)\n- [Usage](#usage)\n- [License](#license)\n- [Contributing](#contributing)\n- [Features](#features)\n- [Test](#test)\n- [Question](#question)`;
 
-    let doc = `${title}\n${description}\n${table}\n${installation}\n${usage}\n${credit}\n${test}`
+    let doc = `${title}\n${description}\n${table}\n${installation}\n${usage}\n${credit}\n${license}\n${test}`
     fs.writeFile(`${fileLocation}`, doc,(err) =>
     err ? console.log(err) : console.log('Success!')
     );
