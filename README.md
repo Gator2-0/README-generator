@@ -18,4 +18,5 @@ node ./index.js
 ```
 and answer the question promted on the terminal
 
-![]()
+![screenshot of the terminal](./assets/screenshot.png)
+
