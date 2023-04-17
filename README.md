@@ -20,3 +20,8 @@ and answer the question promted on the terminal
 
 ![screenshot of the terminal](./assets/screenshot.png)
 
+There are no deployed application for this app as it runs on your local terminal.
+
+You can however find this README file on the web page following the link below
+
+https://gator2-0.github.io/README-generator/
