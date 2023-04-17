@@ -86,8 +86,8 @@ enquirer
     //set user answers into string for the README file
     let title = `# ${response.Title}\n${icon}`;
     let description = `## Descrition \n ${response.Description}`;
-    let usage = `## Usage\n${response.Usage}\n ![${response.Screenshot}] \n ${response.Deployed}`;
-    let installation = `## Installation\n${response.installation}`;
+    let usage = `## Usage\n${response.Usage} \n ![screenshot](${response.Screenshot}) \n ${response.Deployed}`;
+    let installation = `## Installation\n${response.Installation}`;
     let license = `## License\n${response.license}`;
     let credit = `## Credit\n${response.Credit}`;
     let test = `## Test\n${response.Test}`
