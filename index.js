@@ -50,8 +50,8 @@ enquirer
     {
       type: 'select',
       message: 'Which license did you use?',
-      choices: ['MIT','GPLv2','Apache'],
-      name: 'LicenseIcon',
+      choices: ['MIT','GPLv2','Apache','Other'],
+      name: 'Icon'
     },
     {
       type: 'input',
@@ -65,14 +65,29 @@ enquirer
     },
   ])
   .then((response) =>{
-    let title = `# ${response.Title}`;
+    console.log(response.Icon);
+    let icon ;
+    switch(response.Icon){
+      case 'MIT':
+        icon = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+        break;
+      case 'GLv2':
+        icon = "[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html";
+        break;
+      case 'Apache':
+        icon =  "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+        break;
+    }
+
+    let title = `# ${response.Title}\n${icon}`;
     let description = `## Descrition \n ${response.Description}`;
     let usage = `## Usage\n${response.Usage}\n ![${response.Screenshot}] \n ${response.Deployed}`;
     let installation = `## Installation\n${response.installation}`;
     let license = `## License\n${response.license}`;
+    
     let credit = `## Credit\n${response.Credit}`;
     let test = `## Test\n${response.Test}`
-    let question = `## Questions\n${response.Question}`
+    let question = `## Questions\nFor question or enquiries lease contact me at ${response.Question}`
     const table = `## Table of content\n- [Installation](#installation)\n- [Usage](#usage)\n- [License](#license)\n- [Contributing](#contributing)\n- [Features](#features)\n- [Test](#test)\n- [Question](#question)`;
 
     let doc = `${title}\n${description}\n${table}\n${installation}\n${usage}\n${credit}\n${license}\n${test}`
