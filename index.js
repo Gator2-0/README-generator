@@ -63,6 +63,11 @@ enquirer
       message: 'What is your github username?',
       name: 'Question',
     },
+    {
+      type: 'input',
+      message: 'What is your email address?',
+      name: 'Email',
+    },
   ])
   .then((response) =>{
     console.log(response.Icon);
@@ -87,7 +92,7 @@ enquirer
     
     let credit = `## Credit\n${response.Credit}`;
     let test = `## Test\n${response.Test}`
-    let question = `## Question\nFor question or enquiries lease contact me at https://github.com/${response.Question}`
+    let question = `## Question\nFor question or enquiries lease contact me at:\n- https://github.com/${response.Question}\n- ${response.Email}`
     const table = `## Table of content\n- [Installation](#installation)\n- [Usage](#usage)\n- [Credit](#credit)\n- [License](#license)\n- [Features](#features)\n- [Test](#test)\n- [Question](#question)`;
 
     let doc = `${title}\n${description}\n${table}\n${installation}\n${usage}\n${credit}\n${license}\n${test}\n${question}`
